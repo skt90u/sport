@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
+import os
 
 col_area  = [] # 區域
 col_group = [] # 群組
@@ -59,5 +62,6 @@ df = pd.DataFrame({
 		'連勝或連負': col11
         })
 
-file_name = 'C:\\NBA分組排名-' + datetime.datetime.today().strftime('%Y-%m-%d') +'.csv'
-df.to_csv(file_name , sep=',')
+category = 'NBA分組排名'
+file_name = os.path.join(os.getcwd(), category + '-' + datetime.datetime.today().strftime('%Y-%m-%d') +'.csv')
+df.to_csv(file_name , sep=',', encoding='utf-8')  
